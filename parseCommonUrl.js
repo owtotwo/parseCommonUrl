@@ -5,7 +5,7 @@
 // All Rights Reserved.
 // 
 // This is a JS script for parsing a common url. 
-// Specially, it can get the ROOT DOMAIN from common urls.
+// Specially, it can get the ROOT DOMAIN (Site Name and Top Level Domain) from common urls.
 //
 // For the urls which include second-level domains(i.e. co.uk), it will only deal 
 //     with those with common suffixes. 
