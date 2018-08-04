@@ -21,7 +21,7 @@ function parseCommonUrl(url) {
     
     // i.e. scheme://userinfo@host:1080/dir/file?query#fragment
     //      0: url, 1: scheme, 2: userinfo, 3: host, 4: port=1080, 5: path=/dir/file, 6: query, 7: fragment
-    const urlRegex = /^(?:([^:/?#[\]@]+):)?(?:\/\/(?:([^:/?#[\]@]+)@)?([^:/?#[\]@]+)(?::(\d{2,5}))?)?((?:\/[^:/?#[\]@]*)+)?(?:\?([^:/?#[\]@]+))?(?:#([^:/?#[\]@]+))?$/;
+    const urlRegex = /^(?:([^:/?#[\]@]+):(?=\/\/))?(\/\/)?(([^:/?#[\]@]+@)?([^:/?#[\]@]+)(:\d{2,5})?)?((\/[^:/?#[\]@]*)+)?(\?[^:/?#[\]@]+)?(#[^:/?#[\]@]+)?$/;
 
     // normalization
     const normalizeUrl = url.trim().toLowerCase();
