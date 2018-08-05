@@ -99,7 +99,7 @@ console.log("Top Level Domain is " + parseCommonUrl("https://www.google.co.jp/nc
 
 ## Compression
 
-Compressed Version: `parseCommonUrl.min.js`, about 10128 bytes.
+Compressed Version: `parseCommonUrl.min.js`, about 9983 bytes.
 
 By [UglifyJS2](https://github.com/mishoo/UglifyJS2) and [babel-minify](https://github.com/babel/minify).
 
