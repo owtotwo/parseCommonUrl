@@ -101,6 +101,8 @@ console.log("Top Level Domain is " + parseCommonUrl("https://www.google.co.jp/nc
 
 Compressed Version: `parseCommonUrl.min.js`, about 10128 bytes.
 
+By [UglifyJS2](https://github.com/mishoo/UglifyJS2) and [babel-minify](https://github.com/babel/minify).
+
 
 ## Benchmark
 
@@ -118,6 +120,7 @@ Benchmark('parseCommonUrl', function() {
 ```
 
 **Old Result: parseCommonUrl x 696,244 ops/sec ±1.73% (87 runs sampled)**
+
 **New Result: parseCommonUrl x 945,659 ops/sec ±1.72% (83 runs sampled)**
 
 Benchmark by [Benchmark.js](https://benchmarkjs.com/) .
