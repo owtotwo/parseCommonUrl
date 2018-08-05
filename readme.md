@@ -34,7 +34,7 @@ API: **parseCommonUrl**
 - **Type**: Function
 - **Arguments**: 
   + `url` (string) : The [url](https://en.wikipedia.org/wiki/URL) which you want to parse.
-- **Return Value**: An Object with properties as certain parts of url as below. Or `null` if the argument url is incorrect. Note that all the properties are lowercase whatever url input includes lowercase or uppercase. If any part is NOT in url, the corresponding property is `undefined`.
+- **Return Value**: An Object with properties as certain parts of url as below. Or `undefined` if the argument url is incorrect. Note that all the properties are lowercase whatever url input includes lowercase or uppercase. If any part is NOT in url, the corresponding property is `undefined`.
   + **scheme**: A non-empty scheme component followed by a `colon (:)`, consisting of a sequence of characters beginning with a `letter` and followed by any combination of `letters`, `digits`, `plus (+)`, `period (.)`, or `hyphen (-)`. Although schemes are case-insensitive, the canonical form is lowercase and documents that specify schemes must do so with lowercase letters. Examples of popular schemes include `http`, `https`, `ftp`, `mailto`, `file`, `data`, and `irc`.
   + **protocol**: Ditto, always equal to scheme.
   + **userInfo**: An optional userinfo subcomponent that may consist of a user name, followed by an `at symbol (@)`. Use of the format `username:password` in the userinfo subcomponent is *deprecated* for security reasons. 
@@ -56,11 +56,18 @@ API: **parseCommonUrl**
 
 ``` javascript
 // ... Embed the code or require it to get the function `parseCommonUrl`
+
+// Note: Return `null` if one of the urls is in incorrect format.
 function isSameSite(urlA, urlB) {
     // Reference: https://url.spec.whatwg.org/#host-same-site
-    const registrableDomainA = parseCommonUrl(urlA).registrableDomain;
-    const registrableDomainB = parseCommonUrl(urlB).registrableDomain;
-    return registrableDomainA !== undefined && registrableDomainA === registrableDomainB;
+    const [ a, b ] = [ parseCommonUrl(urlA), parseCommonUrl(urlB) ];
+    if (!a || !b) return null;
+    const [ dmA, dmB ] = [ a.domain, b.domain ];
+    const [ ipA, ipB ] = [ a.ipv4, b.ipv4 ];
+    const [ rdA, rdB ] = [ a.registrableDomain, b.registrableDomain ];
+    return (dmA === dmB && dmA !== undefined) || 
+           (ipA === ipB && ipA !== undefined) || 
+           (rdA === rdB && rdA !== undefined);
 }
 ```
 

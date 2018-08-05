@@ -45,7 +45,7 @@
 
         const regexResult = normalizeUrl.match(urlRegex);
 
-        if (regexResult === null) return null;
+        if (regexResult === null) return undefined;
 
         // parse url, host: domain / ipv4 (i.e. a.b.example.co.uk / 127.0.0.1)
         const [ _url, scheme, userInfo, host, ipv4, domain, port, path, query, fragment ] = regexResult;
@@ -65,7 +65,7 @@
                 //      poster.blog.sysu.at => [ poster.blog, sysu, at ]
                 [ domainParts.slice(0, -2).join('.'), domainParts[domainParts.length - 2], domainParts.slice(-1).join('.') ];
 
-            registrableDomain = [ siteName, publicSuffix ].join('.');
+            registrableDomain = siteName ? [ siteName, publicSuffix ].join('.') : undefined;
         }
 
         return { 
