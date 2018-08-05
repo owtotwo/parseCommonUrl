@@ -76,7 +76,7 @@
         };
     }
 
-    // CommonJS
+    // CommonJS (ES6 Module)
     if (typeof module !== 'undefined') {
         module.exports = parseCommonUrl;
     }
