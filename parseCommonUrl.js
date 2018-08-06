@@ -58,7 +58,8 @@
             const secondLastLabel = domainParts[domainParts.length - 2]; // maybe Second Level Domain (SLD) or Undefined
 
             [ subDomain, siteName, publicSuffix ] = 
-                suffix_map.has(lastLabel) && suffix_map.get(lastLabel).includes(secondLastLabel) ?
+                suffix_map.has(lastLabel) && 
+                    (suffix_map.get(lastLabel).includes(secondLastLabel) || suffix_map.get(lastLabel).includes('*')) ?
                 // i.e. www.example.co.uk => [ www, example, co.uk ]
                 [ domainParts.slice(0, -3).join('.'), domainParts[domainParts.length - 3], domainParts.slice(-2).join('.') ] :
                 // i.e. www.example.com     => [ www, example, com ]

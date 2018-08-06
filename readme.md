@@ -15,6 +15,8 @@ That is, the first label of TLD has no hyphen '-' and its length is less than 6.
 
 [**TLD (Top Level Domain)**](https://blog.linkody.com/what-is-a-tld)
 
+Or say the registered or registrable domain, which is the public suffix plus one additional label.
+
 For example:
 
 > `www.MySiteName.modena.it` and `www.MySiteName.monza-brianza.it` will give you the TLD `it`.
