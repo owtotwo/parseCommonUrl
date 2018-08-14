@@ -94,7 +94,7 @@
 
     // Browser
     if (typeof window !== 'undefined') {
-        window.parseCommonUrl === undefined ? parseCommonUrl : undefined;
+        window.parseCommonUrl = window.parseCommonUrl || parseCommonUrl;
     }
 
     return parseCommonUrl;
