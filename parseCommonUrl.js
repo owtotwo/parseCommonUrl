@@ -32,7 +32,7 @@
 
     // i.e. scheme://userinfo@host:1080/dir/file?query#fragment
     //      0: url, 1: scheme, 2: userinfo, 3: host, 4: IPv4, 5: domain, 6: port=1080, 7: path=/dir/file, 8: query, 9: fragment
-    const urlRegex = /^(?:([^\s:/?#[\]@]+):(?=\/\/))?(?:\/\/)?(?:(?:([^\s:/?#[\]@]+)@)?(((?:\d{1,3}\.){3}\d{1,3})|([^\s:/?#[\]@]+))(?::(\d{1,5}))?)?((?:\/[^\s:/?#[\]@]*)+)?(?:\?([^\s:/?#[\]@]+))?(?:#([^\s:/?#[\]@]+))?$/;
+    const urlRegex = /^(?:([^\s:/?#[\]@]+):(?=\/\/))?(?:\/\/)?(?:(?:([^\s:/?#[\]@]+)@)?(((?:\d{1,3}\.){3}\d{1,3})|([^\s:/?#[\]@]+))(?::(\d{1,5}))?)?((?:\/[^\s:/?#[\]@]*)+)?(?:\?([^\s:?#[\]@]+))?(?:#([^\s:?#[\]@]+))?$/;
 
     // make a map
     const suffix_map = new Map(public_suffix_list_subset.split('|').map(v => [v.split(' ', 1)[0], v.split(' ').slice(1)]));
