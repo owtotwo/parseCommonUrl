@@ -32,7 +32,7 @@
 
     // i.e. scheme://userinfo@host:1080/dir/file?query#fragment
     //      0: url, 1: scheme, 2: userinfo, 3: host, 4: IPv4, 5: domain, 6: port=1080, 7: path=/dir/file, 8: query, 9: fragment
-    const urlRegex = /^(?:([^\s:/?#[\]@]+):(?=\/\/))?(?:\/\/)?(?:(?:([^\s:/?#[\]@]+)@)?(((?:\d{1,3}\.){3}\d{1,3})|([^\s:/?#[\]@]+))(?::(\d{1,5}))?)?((?:\/[^\s:/?#[\]@]*)+)?(?:\?([^\s?#]+))?(?:#([^\s?#]+))?$/;
+    const urlRegex = /^(?:(?<scheme>[^\s:/?#[\]@]+):(?=\/\/))?(?:\/\/)?(?:(?:(?<userInfo>[^\s:/?#[\]@]+)@)?(?<host>(?<ipv4>(?:\d{1,3}\.){3}\d{1,3})|(?<domain>[^\s:/?#[\]@]+))(?::(?<port>\d{1,5}))?)?(?<path>(?:(?<dir>\/(?:[^\s:/?#[\]@]*\/)*)(?<file>[^\s:/?#[\]@]*)))?(?:(?<=\k<file>)\?(?<query>[^\s?#]+))?(?:(?<=\k<file>)#(?<fragment>[^\s?#]+))?$/;
 
     // make a map
     const suffix_map = new Map(public_suffix_list_subset.split('|').map(v => [v.split(' ', 1)[0], v.split(' ').slice(1)]));
@@ -48,7 +48,7 @@
         if (regexResult === null) return undefined;
 
         // parse url, host: domain / ipv4 (i.e. a.b.example.co.uk / 127.0.0.1)
-        const [ _url, scheme, userInfo, host, ipv4, domain, port, path, query, fragment ] = regexResult;
+        const { scheme, userInfo, host, ipv4, domain, port, path, query, fragment } = regexResult.groups;
 
         let subDomain, siteName, publicSuffix, registrableDomain;
 
