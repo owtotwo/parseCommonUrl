@@ -32,9 +32,9 @@
 
     // Reference: https://tools.ietf.org/html/rfc1808#section-2.2
     // Format: [[scheme:]//[userinfo@]host[:1080]/[dir/file][?query]][#fragment]
-    const urlRegex = /^(?:(?<scheme>[\w.+-]+):)?\/\/(?:(?<userInfo>[^\s:/?#[\]@]+)@)?(?<host>(?<ipv4>(?:\d{1,3}\.){3}\d{1,3})|(?<domain>[^\s:/?#[\]@]+))(?::(?<port>\d{1,5}))?(?<path>\/(?:[^\s/?#]+(?:\/[^\s/?#]*)*)?)(?:\?(?<query>[^\s?#]+))?(?:#(?<fragment>[^\s?#]+))?$/;
+    const urlRegex = /^(?:(?<scheme>[\w.+-]+):)?\/\/(?:(?<userInfo>[^\s:/?#[\]@]+)@)?(?<host>(?<ipv4>(?:\d{1,3}\.){3}\d{1,3})|(?<domain>[^\s:/?#[\]@]+))(?::(?<port>\d{1,5}))?(?<path>\/(?:[^\s/?#]+(?:\/[^\s/?#]*)*)?)(?:\?(?<query>[^\s?#]*))?(?:#(?<fragment>[^\s?#]*))?$/;
     // Format: [[scheme:][/][dir/file][?query]][#fragment]
-    const urlShortRegex = /^(?:(?<scheme>[\w.+-]+):)?(?<path>\/?(?:[^\s/?#]+(?:\/[^\s/?#]*)*)?)(?:\?(?<query>[^\s?#]+))?(?:#(?<fragment>[^\s?#]+))?$/;
+    const urlShortRegex = /^(?:(?<scheme>[\w.+-]+):)?(?<path>\/?(?:[^\s/?#]+(?:\/[^\s/?#]*)*)?)(?:\?(?<query>[^\s?#]*))?(?:#(?<fragment>[^\s?#]*))?$/;
 
     // make a map
     const suffix_map = new Map(public_suffix_list_subset.split('|').map(v => [v.split(' ', 1)[0], v.split(' ').slice(1)]));
