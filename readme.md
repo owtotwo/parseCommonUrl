@@ -59,11 +59,11 @@ API: **parseCommonUrl**
 ``` javascript
 // ... Embed the code or require it to get the function `parseCommonUrl`
 
-// Note: Return `null` if one of the urls is in incorrect format.
+// Note: Return `undefined` if one of the urls is in incorrect format.
 function isSameSite(urlA, urlB) {
     // Reference: https://url.spec.whatwg.org/#host-same-site
     const [ a, b ] = [ parseCommonUrl(urlA), parseCommonUrl(urlB) ];
-    if (!a || !b) return null;
+    if (!a || !b) return undefined;
     const [ dmA, dmB ] = [ a.domain, b.domain ];
     const [ ipA, ipB ] = [ a.ipv4, b.ipv4 ];
     const [ rdA, rdB ] = [ a.registrableDomain, b.registrableDomain ];
